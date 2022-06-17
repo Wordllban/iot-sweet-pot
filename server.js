@@ -27,6 +27,7 @@ app.get("/", (req, res) => {
 const potsRouter = require("./src/routes/sweetpot.routes")(app);
 const temperatureRouter = require("./src/routes/temperature.routes")(app);
 const soilMoistureRouter = require("./src/routes/soilMoisture.routes")(app);
+const airMoistureRouter = require("./src/routes/airMoisture.routes")(app);
 
 // setup server port
 const PORT = process.env.PORT || 5050;
