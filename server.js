@@ -20,12 +20,13 @@ app.use(forms.array());
 
 // define a root route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Wordllban application." });
+  res.json({ message: "Welcome to SweetPot application." });
 });
 
-// Require pot routes
+// Require routes
 const potsRouter = require("./src/routes/sweetpot.routes")(app);
 const temperatureRouter = require("./src/routes/temperature.routes")(app);
+const soilMoistureRouter = require("./src/routes/soilMoisture.routes")(app);
 
 // setup server port
 const PORT = process.env.PORT || 5050;
