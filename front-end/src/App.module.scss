@@ -1,0 +1,31 @@
+@import "./assets/colors.scss";
+@import "./assets/fonts.scss";
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+
+  background-color: $slate-900;
+  color: $snow;
+  font-family: $open-sans;
+
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin-left: 8rem;
+  margin-right: 8rem;
+}
+
+.refresh {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

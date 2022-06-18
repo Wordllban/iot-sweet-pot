@@ -1,0 +1,33 @@
+@import "../../assets/colors.scss";
+
+.sensor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  max-width: 20vw;
+  width: 100%;
+  border: 2px solid $cloud-burst;
+  background: transparent;
+
+  transition: all 0.3s ease-in;
+  &:hover {
+    box-shadow: 0 2px 10px $light-colar;
+  }
+
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.header {
+  border-bottom: 2px solid $cloud-burst;
+  padding-bottom: 0.5rem;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

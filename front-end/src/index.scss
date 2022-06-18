@@ -1,0 +1,27 @@
+@import "./assets/colors.scss";
+@import "./assets/fonts.scss";
+
+html {
+  scroll-behavior: smooth;
+  background-color: $slate-900;
+}
+
+body {
+  background-color: $slate-900;
+
+  font-family: -apple-system, BlinkMacSystemFont, $open-sans;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color: $snow;
+}
+
+h2 {
+  text-align: center;
+  font-size: $header-s;
+  color: $cloud-burst;
+}
+
+a {
+  text-decoration: none;
+}

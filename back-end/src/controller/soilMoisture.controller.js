@@ -37,7 +37,10 @@ exports.create = (req, res) => {
 
 // Retrieve all sensor data from the database.
 exports.findAll = (req, res) => {
-  SoilMoisture.findAll()
+  SoilMoisture.findAll({
+    limit: 5,
+    order: [["createdAt", "DESC"]],
+  })
     .then((data) => {
       res.send(data);
     })
