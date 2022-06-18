@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Sensor.module.scss";
 
 import { ESensor } from "../../types/sensor";
-import { useSensorData } from "../../hooks/useSensorData";
+import { getSensorData } from "../../services/api";
 
 interface SensorProps {
   type: ESensor;
 }
 
 const Sensor: React.FC<SensorProps> = ({ type }) => {
-  const { sensorData } = useSensorData(type);
+  const [data, setData] = useState<any>([]);
+
+  const getData = async () => {
+    const data = await getSensorData(type);
+    setData(data);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    const refetch = setInterval(async () => {
+      console.log("interval gone");
+      const data = await getSensorData(type);
+      setData(data);
+    }, 15000);
+    return () => {
+      clearInterval(refetch);
+    };
+  }, []);
 
   const handleValueStatus = (value: string | number) => {
     if (type === ESensor.humidity) {
@@ -53,12 +73,13 @@ const Sensor: React.FC<SensorProps> = ({ type }) => {
     <div className={styles.sensor}>
       <h2 className={styles.header}>{type}</h2>
       <div className={styles.content}>
-        {sensorData &&
-          sensorData.map((item: any) => {
+        {data &&
+          data.map((item: any) => {
             return (
               <div className={styles.value}>
                 <span key={`${type}-${item.value}-${item.createdAt}`}>
                   {item.value}
+                  {type === ESensor.moisture && "%"}
                 </span>
                 <span
                   className={styles.status}
