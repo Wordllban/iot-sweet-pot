@@ -14,12 +14,12 @@ import { ESensor } from "./types/sensor";
 import { useDevice } from "./hooks/useDevice";
 
 function App() {
-  const handleRefreshData = () => {
-    console.log("data refreshed");
+  const { device } = useDevice();
+
+  const handleRefresh = () => {
+    window.location.reload();
   };
 
-  const { device } = useDevice();
-  
   return (
     <div className={styles.app}>
       {device && (
@@ -33,7 +33,7 @@ function App() {
         <Sensor type={ESensor.moisture} />
       </div>
       <div className={styles.refresh}>
-        <Button onClickHandler={handleRefreshData} />
+        <Button onClick={handleRefresh} />
       </div>
     </div>
   );

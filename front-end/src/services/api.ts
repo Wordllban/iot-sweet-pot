@@ -24,7 +24,6 @@ export const getSensorData = async (sensorType: ESensor) => {
     url += "temperature";
   }
 
-  console.log("url: ", url);
   return (await http.get(url)).data;
 };
 

@@ -2,12 +2,12 @@ import React from "react";
 import styles from "./Button.module.scss";
 
 interface ButtonProps {
-  onClickHandler: () => void;
+  onClick: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ onClickHandler }) => {
+const Button: React.FC<ButtonProps> = ({ onClick }) => {
   return (
-    <button className={styles.button} onClick={onClickHandler}>
+    <button className={styles.button} onClick={onClick}>
       Refresh
     </button>
   );
