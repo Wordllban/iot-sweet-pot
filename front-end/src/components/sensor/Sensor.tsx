@@ -82,8 +82,8 @@ const Sensor: React.FC<SensorProps> = ({ type }) => {
         {data &&
           data.map((item: TSensor) => {
             return (
-              <div className={styles.value}>
-                <span key={`${type}-${item.value}-${item.createdAt}`}>
+              <div className={styles.value} key={`${type}-${item.createdAt}`}>
+                <span>
                   {item.value}
                   {type === ESensor.moisture && "%"}
                 </span>
