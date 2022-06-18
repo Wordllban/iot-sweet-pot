@@ -7,7 +7,7 @@ export enum ESensor {
 export type TSensor = {
   id: string | number;
   value: string | number;
-  createAt: string | number;
-  updatedAt: string | number;
+  createdAt: string;
+  updatedAt: string;
   sweetPotId: string | number;
-}
+};

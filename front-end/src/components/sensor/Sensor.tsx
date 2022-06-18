@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Sensor.module.scss";
 
-import { ESensor } from "../../types/sensor";
+import { ESensor, TSensor } from "../../types/sensor";
 import { getSensorData } from "../../services/api";
 
 interface SensorProps {
@@ -22,7 +22,6 @@ const Sensor: React.FC<SensorProps> = ({ type }) => {
 
   useEffect(() => {
     const refetch = setInterval(async () => {
-      console.log("interval gone");
       const data = await getSensorData(type);
       setData(data);
     }, 15000);
@@ -69,12 +68,19 @@ const Sensor: React.FC<SensorProps> = ({ type }) => {
     }
   };
 
+  const handleTimeReveceived = (item: TSensor) => {
+    const dateTime = item.createdAt.split("T");
+    const date = dateTime[0];
+    const time = dateTime[1].substring(0, dateTime[1].indexOf("."));
+    return { date, time };
+  };
+
   return (
     <div className={styles.sensor}>
       <h2 className={styles.header}>{type}</h2>
       <div className={styles.content}>
         {data &&
-          data.map((item: any) => {
+          data.map((item: TSensor) => {
             return (
               <div className={styles.value}>
                 <span key={`${type}-${item.value}-${item.createdAt}`}>
@@ -85,6 +91,12 @@ const Sensor: React.FC<SensorProps> = ({ type }) => {
                   className={styles.status}
                   style={{ backgroundColor: handleValueStatus(item.value) }}
                 ></span>
+                <span className={styles.time}>
+                  {handleTimeReveceived(item).time}
+                </span>
+                <span className={styles.time}>
+                  {handleTimeReveceived(item).date}
+                </span>
               </div>
             );
           })}
