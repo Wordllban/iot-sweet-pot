@@ -6,6 +6,12 @@
   justify-content: center;
   align-items: stretch;
   flex-direction: column;
+  color: $snow;
+  font-family: $open-sans;
+}
+
+.device {
+  text-align: center;
 }
 
 .content {
@@ -16,7 +22,6 @@
 
   background-color: $slate-900;
   color: $snow;
-  font-family: $open-sans;
 
   padding-left: 4rem;
   padding-right: 4rem;
