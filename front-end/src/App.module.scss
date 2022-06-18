@@ -1,0 +1,36 @@
+@import "./assets/colors.scss";
+@import "./assets/fonts.scss";
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+  color: $snow;
+  font-family: $open-sans;
+}
+
+.device {
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+
+  background-color: $slate-900;
+  color: $snow;
+
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin-left: 8rem;
+  margin-right: 8rem;
+}
+
+.refresh {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

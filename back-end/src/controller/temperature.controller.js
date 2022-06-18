@@ -37,7 +37,10 @@ exports.create = (req, res) => {
 
 // Retrieve all Pot from the database.
 exports.findAll = (req, res) => {
-  Temperature.findAll()
+  Temperature.findAll({
+    limit: 5,
+    order: [["createdAt", "DESC"]],
+  })
     .then((data) => {
       res.send(data);
     })
