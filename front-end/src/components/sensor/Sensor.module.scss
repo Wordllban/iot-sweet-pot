@@ -6,7 +6,7 @@
   justify-content: center;
   flex-direction: column;
 
-  max-width: 20vw;
+  max-width: 400px;
   width: 100%;
   border: 2px solid $cloud-burst;
   background: transparent;
@@ -21,7 +21,7 @@
 }
 
 .header {
-  border-bottom: 2px solid $cloud-burst;
+  border-bottom: 2px solid $blueberry;
   padding-bottom: 0.5rem;
 }
 
@@ -30,4 +30,23 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+}
+
+.status {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 10px;
+  margin-left: 3rem;
+}
+
+.time {
+  margin-left: 3rem;
 }
