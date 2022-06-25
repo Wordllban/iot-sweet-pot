@@ -1,6 +1,4 @@
-const Sequelize = require("sequelize");
 const AirMoisture = require("../models/airMoisture.model");
-const Op = Sequelize.Op;
 
 // Create and Save a new sensor data
 exports.create = (req, res) => {

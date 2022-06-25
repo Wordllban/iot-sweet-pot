@@ -1,6 +1,4 @@
-const Sequelize = require("sequelize");
 const Temperature = require("../models/temperature.model");
-const Op = Sequelize.Op;
 
 // Create and Save a new Pot
 exports.create = (req, res) => {

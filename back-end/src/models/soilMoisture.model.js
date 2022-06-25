@@ -1,11 +1,8 @@
 const db = require("./db");
-const Sequelize = require("sequelize");
+const sensor = require("./sensor.model");
 
 const SoilMoisture = db.define("soilMoisture", {
-  value: {
-    type: Sequelize.FLOAT,
-    allowNull: false,
-  },
+  ...sensor,
 });
 
 module.exports = SoilMoisture;
