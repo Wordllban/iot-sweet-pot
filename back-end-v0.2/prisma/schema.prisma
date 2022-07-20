@@ -17,9 +17,10 @@ model User {
 
   email String @unique
   hash  String
+  hashedRefreshToken String?
 
-  firstName String
-  lastName  String
+  name String
+  surname  String
 
   pots Pot[]
 
