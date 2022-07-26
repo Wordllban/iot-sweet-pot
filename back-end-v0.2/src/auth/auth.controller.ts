@@ -6,7 +6,7 @@ import {
   Post,
   UseGuards,
 } from "@nestjs/common";
-import { GetCurrentUser, GetCurrentUserId, Public } from "../common/decorators";
+import { GetUser, GetUserId, Public } from "../common/decorators";
 import { AccessTokenGuard, RefreshTokenGuard } from "../common/guards";
 import { AuthService } from "./auth.service";
 import { AuthInDto, AuthUpDto } from "./dto";
@@ -33,7 +33,7 @@ export class AuthController {
   @UseGuards(AccessTokenGuard)
   @Post("logout")
   @HttpCode(HttpStatus.OK)
-  logout(@GetCurrentUserId() userId: number) {
+  logout(@GetUserId() userId: number) {
     return this.authService.logout(userId);
   }
 
@@ -42,8 +42,8 @@ export class AuthController {
   @Post("refresh")
   @HttpCode(HttpStatus.OK)
   refreshTokens(
-    @GetCurrentUserId() userId: number,
-    @GetCurrentUser("hashedRefreshToken") hashedRefreshToken: string,
+    @GetUserId() userId: number,
+    @GetUser("hashedRefreshToken") hashedRefreshToken: string,
   ) {
     return this.authService.refreshTokens(userId, hashedRefreshToken);
   }
