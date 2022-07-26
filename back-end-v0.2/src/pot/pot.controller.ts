@@ -6,37 +6,49 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
 } from "@nestjs/common";
 import { PotService } from "./pot.service";
 import { CreatePotDto } from "./dto/create-pot.dto";
-import { UpdatePotDto } from "./dto/update-pot.dto";
+import { EditPotDto } from "./dto/edit-pot.dto";
+import { GetUser } from "src/auth/decorator/get-user.decorator";
 
-@Controller("pot")
+@Controller("pots")
 export class PotController {
   constructor(private readonly potService: PotService) {}
 
-  @Post()
-  create(@Body() createPotDto: CreatePotDto) {
-    return this.potService.create(createPotDto);
+  @Post("create")
+  createPot(@GetUser("id") userId: number, @Body() createPotDto: CreatePotDto) {
+    return this.potService.createPot(userId, createPotDto);
   }
 
-  @Get()
-  findAll() {
-    return this.potService.findAll();
+  @Get("my")
+  getPots(@GetUser("id") userId: number) {
+    return this.potService.getPots(userId);
   }
 
   @Get(":id")
-  findOne(@Param("id") id: string) {
-    return this.potService.findOne(+id);
+  getPotById(
+    @GetUser("id") userId: number,
+    @Param("id", ParseIntPipe) potId: number,
+  ) {
+    return this.potService.getPotById(userId, potId);
   }
 
-  @Patch(":id")
-  update(@Param("id") id: string, @Body() updatePotDto: UpdatePotDto) {
-    return this.potService.update(+id, updatePotDto);
+  @Patch("edit/:id")
+  editPot(
+    @GetUser("id") userId: number,
+    @Param("id", ParseIntPipe) potId: number,
+    @Body() updatePotDto: EditPotDto,
+  ) {
+    return this.potService.editPot(userId, potId, updatePotDto);
   }
 
-  @Delete(":id")
-  remove(@Param("id") id: string) {
-    return this.potService.remove(+id);
+  @Delete("delete/:id")
+  deletePotById(
+    @GetUser("id") userId: number,
+    @Param("id", ParseIntPipe) potId: number,
+  ) {
+    return this.potService.deletePotById(userId, potId);
   }
 }
