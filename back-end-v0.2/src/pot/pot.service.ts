@@ -21,6 +21,11 @@ export class PotService {
       where: {
         ownerId,
       },
+      include: {
+        humidity: true,
+        temperature: true,
+        moisture: true,
+      },
     });
   }
 
@@ -41,7 +46,7 @@ export class PotService {
       },
     });
 
-    // check if user owns the bookmark
+    // check if user owns the pot
     if (!pot || pot.ownerId !== ownerId)
       throw new ForbiddenException(
         "You are not owner of this pot! Access denied",
@@ -98,7 +103,7 @@ export class PotService {
       },
     });
 
-    // check if user owns the bookmark
+    // check if user owns the pot
     if (!pot || pot.ownerId !== ownerId)
       throw new ForbiddenException(
         "You are not owner of this pot! Access denied",
@@ -109,6 +114,5 @@ export class PotService {
         id: potId,
       },
     });
-
   }
 }

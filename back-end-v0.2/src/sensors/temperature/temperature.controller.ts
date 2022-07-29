@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param, Delete } from "@nestjs/common";
 import { TemperatureService } from "./temperature.service";
 import { CreateTemperatureDto } from "./dto";
 
-@Controller("temperature")
+@Controller("sensors/temperature")
 export class TemperatureController {
   constructor(private readonly temperatureService: TemperatureService) {}
 

@@ -41,8 +41,6 @@ model Pot {
   temperature Temperature[]
   humidity    Humidity[]
   moisture    Moisture[]
-
-  @@map("pots")
 }
 
 model Temperature {
@@ -52,9 +50,9 @@ model Temperature {
   name        String?
   description String?
   model       String?
-  value       Int
+  value       Float
 
-  pot   Pot @relation(fields: [potId], references: [id])
+  pots  Pot @relation(fields: [potId], references: [id])
   potId Int
 }
 
@@ -65,7 +63,7 @@ model Humidity {
   name        String?
   description String?
   model       String?
-  value       Int
+  value       Float
 
   pot   Pot @relation(fields: [potId], references: [id])
   potId Int
@@ -78,7 +76,7 @@ model Moisture {
   name        String?
   description String?
   model       String?
-  value       Int
+  value       Float
 
   pot   Pot @relation(fields: [potId], references: [id])
   potId Int

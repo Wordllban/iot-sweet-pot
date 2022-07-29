@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param, Delete } from "@nestjs/common";
 import { MoistureService } from "./moisture.service";
 import { CreateMoistureDto } from "./dto";
 
-@Controller("moisture")
+@Controller("sensors/moisture")
 export class MoistureController {
   constructor(private readonly moistureService: MoistureService) {}
 

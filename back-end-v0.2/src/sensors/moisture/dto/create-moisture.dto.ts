@@ -1,3 +1,3 @@
-import { SensorDto } from "src/sensors/sensor.dto";
+import { CreateSensorDto } from "../../dto/create-sensor.dto";
 
-export class CreateMoistureDto extends SensorDto {}
+export class CreateMoistureDto extends CreateSensorDto {}
