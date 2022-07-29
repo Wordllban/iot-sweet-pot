@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  email              String  @unique
+  hash               String
+  hashedRefreshToken String?
+
+  name    String
+  surname String
+
+  pots Pot[]
+
+  @@map("users")
+}
+
+model Pot {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  owner   User @relation(fields: [ownerId], references: [id])
+  ownerId Int
+
+  name        String
+  description String?
+
+  temperature Temperature[]
+  humidity    Humidity[]
+  moisture    Moisture[]
+}
+
+model Temperature {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+
+  name        String?
+  description String?
+  model       String?
+  value       Float
+
+  pots  Pot @relation(fields: [potId], references: [id])
+  potId Int
+}
+
+model Humidity {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+
+  name        String?
+  description String?
+  model       String?
+  value       Float
+
+  pot   Pot @relation(fields: [potId], references: [id])
+  potId Int
+}
+
+model Moisture {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+
+  name        String?
+  description String?
+  model       String?
+  value       Float
+
+  pot   Pot @relation(fields: [potId], references: [id])
+  potId Int
+}
