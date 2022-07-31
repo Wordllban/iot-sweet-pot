@@ -5,6 +5,7 @@ import { CreateHumidityDto, EditHumidityDto } from "./dto";
 @Injectable()
 export class HumidityService {
   constructor(private prisma: PrismaService) {}
+  
   async createHumidity(potId: number, dto: CreateHumidityDto) {
     const { value, name, description, model } = dto;
     const humiditySensor = await this.prisma.humidity.create({

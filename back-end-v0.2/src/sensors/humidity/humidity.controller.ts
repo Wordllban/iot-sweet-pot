@@ -41,7 +41,12 @@ export class HumidityController {
     @Query("potId") potId: number,
     @Body() editHumidityDto: EditHumidityDto,
   ) {
-    return this.humidityService.editHumidity(+id, +userId, +potId, editHumidityDto);
+    return this.humidityService.editHumidity(
+      +id,
+      +userId,
+      +potId,
+      editHumidityDto,
+    );
   }
 
   @Delete(":id?")

@@ -50,7 +50,7 @@ export class MoistureController {
     );
   }
 
-  @Delete(":id")
+  @Delete(":id?")
   remove(
     @GetUserId() userId: number,
     @Param("id") id: number,
