@@ -23,10 +23,8 @@ export class HumidityService {
       },
       data: {
         humidity: {
-          upsert: {
-            where: { id: potId },
-            update: { ...humiditySensor },
-            create: { ...humiditySensor },
+          connect: {
+            id: humiditySensor.id,
           },
         },
       },
